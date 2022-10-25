@@ -1,3 +1,4 @@
+import 'package:comic_viwer_practice/game/game_loop_view.dart';
 import 'package:comic_viwer_practice/game/game_screen.dart';
 import 'package:comic_viwer_practice/horizontal_reader/horizontal_reader_screen.dart';
 import 'package:comic_viwer_practice/vertical_reader/vertical_reader_screen.dart';
@@ -64,7 +65,7 @@ class MyHomeScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => GameWidget(game: GameScreen()),
+                builder: (_) => GameLoopView(),
                 fullscreenDialog: true,
               )),
               style: ButtonStyle(
