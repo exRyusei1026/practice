@@ -1,5 +1,7 @@
+import 'package:comic_viwer_practice/game/game_screen.dart';
 import 'package:comic_viwer_practice/horizontal_reader/horizontal_reader_screen.dart';
 import 'package:comic_viwer_practice/vertical_reader/vertical_reader_screen.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -54,10 +56,23 @@ class MyHomeScreen extends StatelessWidget {
               )),
               style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.green[200]!),
+                    MaterialStateProperty.all<Color>(Colors.yellow[200]!),
               ),
               child: const Text(
                 'to vertical comic viewer',
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => GameWidget(game: GameScreen()),
+                fullscreenDialog: true,
+              )),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.yellow[200]!),
+              ),
+              child: const Text(
+                'to game',
               ),
             ),
           ],
