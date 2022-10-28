@@ -1,9 +1,9 @@
-import 'package:comic_viwer_practice/constants/constants.dart';
-import 'package:comic_viwer_practice/game/children/ball.dart';
-import 'package:comic_viwer_practice/game/children/block.dart';
-import 'package:comic_viwer_practice/game/children/countdown_text.dart';
-import 'package:comic_viwer_practice/game/children/my_text_button.dart';
-import 'package:comic_viwer_practice/game/children/paddle.dart';
+import 'package:comic_viwer_practice/constants/block_breaker_constants.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/ball.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/block.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/countdown_text.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/my_text_button.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/paddle.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';

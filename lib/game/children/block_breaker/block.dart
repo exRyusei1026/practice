@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'dart:math';
 
-import 'package:comic_viwer_practice/constants/constants.dart';
-import 'package:comic_viwer_practice/game/children/ball.dart';
+import 'package:comic_viwer_practice/constants/block_breaker_constants.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/ball.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:comic_viwer_practice/constants/constants.dart';
+import 'package:comic_viwer_practice/constants/block_breaker_constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 

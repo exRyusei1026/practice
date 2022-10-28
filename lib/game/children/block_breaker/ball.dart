@@ -1,9 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:comic_viwer_practice/constants/constants.dart';
-import 'package:comic_viwer_practice/game/children/block.dart' as block;
-import 'package:comic_viwer_practice/game/children/paddle.dart';
+import 'package:comic_viwer_practice/constants/block_breaker_constants.dart';
+import 'package:comic_viwer_practice/game/children/block_breaker/block.dart'
+    as block;
+import 'package:comic_viwer_practice/game/children/block_breaker/paddle.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
