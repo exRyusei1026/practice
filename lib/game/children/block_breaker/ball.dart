@@ -33,7 +33,6 @@ class Ball extends CircleComponent with CollisionCallbacks {
       kBallMaxSpawnAngle,
       random,
     )!;
-    // if (spawnAngle == null) return 0.0;
     return spawnAngle;
   }
 

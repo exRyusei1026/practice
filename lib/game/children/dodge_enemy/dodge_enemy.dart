@@ -13,13 +13,15 @@ class DodgeEnemy extends FlameGame
     with HasCollisionDetection, HasDraggableComponents, HasTappableComponents {
   DodgeEnemy();
 
+  bool get isCleared => children.whereType<Enemy>().isEmpty;
+
   @override
   Future<void>? onLoad() async {
     final player = Player(draggingPlayer: draggingPlayer);
     final playerSize = player.size;
     player
       ..position.x = size.x / 2 - playerSize.x / 2
-      ..position.y = size.y - playerSize.y - 100;
+      ..position.y = size.y - playerSize.y - 150;
 
     await addTextButton('Start!');
 
@@ -28,7 +30,6 @@ class DodgeEnemy extends FlameGame
       player,
     ]);
 
-    // await resetEnemy();
     return await super.onLoad();
   }
 
@@ -36,11 +37,11 @@ class DodgeEnemy extends FlameGame
     final enemy = Enemy(
       onEnemyRemove: onEnemyRemove,
     );
-
     enemy.position
-      ..x = Random().nextDouble() * size.x
-      ..y = -size.y;
+      ..x = Random().nextDouble() * (size.x - enemy.size.x)
+      ..y = -size.y + enemy.size.y;
     await add(enemy);
+    await Future.delayed(const Duration(seconds: 1));
   }
 
   Future<void> addTextButton(String text) async {
@@ -63,7 +64,10 @@ class DodgeEnemy extends FlameGame
     });
 
     await countdown();
-    await resetEnemy();
+    for (var i = 0; i < 10; i++) {
+      await resetEnemy();
+      if (isCleared) break;
+    }
   }
 
   void renderTextButton(Canvas canvas) {
@@ -73,8 +77,19 @@ class DodgeEnemy extends FlameGame
     canvas.drawRect(rect, bgPaint);
   }
 
-  Future<void> onEnemyRemove() async {
-    await addTextButton('Retry');
+  Future<void> onEnemyRemove(bool isHittedPlayer) async {
+    if (isHittedPlayer) {
+      await addTextButton('Retry');
+      children.whereType<Enemy>().forEach((enemy) {
+        enemy.removeFromParent();
+      });
+    }
+    if (!isHittedPlayer && isCleared) {
+      await addTextButton('Clear!');
+      children.whereType<Enemy>().forEach((enemy) {
+        enemy.removeFromParent();
+      });
+    }
   }
 
   void draggingPlayer(DragUpdateEvent event) {

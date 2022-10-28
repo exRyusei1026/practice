@@ -16,7 +16,7 @@ class Enemy extends CircleComponent with CollisionCallbacks {
     velocity = Vector2(0, vy);
   }
 
-  final Future<void> Function() onEnemyRemove;
+  final Future<void> Function(bool isHittedPlayer) onEnemyRemove;
 
   late Vector2 velocity;
   bool isCollidedScreenHitboxY = false;
@@ -41,6 +41,17 @@ class Enemy extends CircleComponent with CollisionCallbacks {
     await add(hitbox);
 
     return await super.onLoad();
+  }
+
+  @override
+  void onRemove() async {
+    if (isCollidedScreenHitboxY) {
+      await onEnemyRemove(false);
+      isCollidedScreenHitboxY = false;
+    } else {
+      await onEnemyRemove(true);
+    }
+    super.onRemove();
   }
 
   @override
@@ -73,6 +84,7 @@ class Enemy extends CircleComponent with CollisionCallbacks {
 
       for (final point in intersectionPoints) {
         if (point.y == screenHitBoxRect.bottom) {
+          isCollidedScreenHitboxY = true;
           removeFromParent();
         }
       }
@@ -84,9 +96,15 @@ class Enemy extends CircleComponent with CollisionCallbacks {
     Vector2 collisionPoint,
     Rect rect,
   ) {
+    final isLeftHit = collisionPoint.x == rect.left;
+    final isRightHit = collisionPoint.x == rect.right;
     final isTopHit = collisionPoint.y == rect.top;
+    final isBottomHit = collisionPoint.y == rect.bottom;
 
-    if (isTopHit) {
+    final isLeftOrRightHit = isLeftHit || isRightHit;
+    final isTopOrBottomHit = isTopHit || isBottomHit;
+
+    if (isLeftOrRightHit || isTopOrBottomHit) {
       removeFromParent();
     }
   }
