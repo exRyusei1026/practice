@@ -12,6 +12,14 @@ class VerticalReaderState with _$VerticalReaderState {
   }) = _VerticalReaderState;
 }
 
+final comicProvider = FutureProvider.autoDispose((_) async {
+  final mangalist = [
+    'https://www.sample-videos.com/img/Sample-jpg-image-100kb.jpg',
+    'https://www.sample-videos.com/img/Sample-jpg-image-100kb.jpg',
+    'https://www.sample-videos.com/img/Sample-jpg-image-200kb.jpg',
+  ];
+});
+
 final verticalReaderProvider = StateNotifierProvider.family<
         VerticalReaderNotifier, VerticalReaderState, ScrollController>(
     (ref, scrollController) => VerticalReaderNotifier(scrollController));
