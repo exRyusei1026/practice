@@ -8,7 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const list = [
-  'https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg',
+  'https://www.sample-videos.com/img/Sample-jpg-image-100kb.jpg',
   'https://www.sample-videos.com/img/Sample-jpg-image-100kb.jpg',
   'https://www.sample-videos.com/img/Sample-jpg-image-200kb.jpg',
 ];

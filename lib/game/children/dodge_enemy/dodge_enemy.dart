@@ -13,7 +13,7 @@ class DodgeEnemy extends FlameGame
     with HasCollisionDetection, HasDraggableComponents, HasTappableComponents {
   DodgeEnemy();
 
-  bool get isCleared => children.whereType<Enemy>().isEmpty;
+  bool get isFinished => children.whereType<Enemy>().isEmpty;
 
   @override
   Future<void>? onLoad() async {
@@ -66,7 +66,7 @@ class DodgeEnemy extends FlameGame
     await countdown();
     for (var i = 0; i < 10; i++) {
       await resetEnemy();
-      if (isCleared) break;
+      if (isFinished) break;
     }
   }
 
@@ -84,7 +84,7 @@ class DodgeEnemy extends FlameGame
         enemy.removeFromParent();
       });
     }
-    if (!isHittedPlayer && isCleared) {
+    if (!isHittedPlayer && isFinished) {
       await addTextButton('Clear!');
       children.whereType<Enemy>().forEach((enemy) {
         enemy.removeFromParent();

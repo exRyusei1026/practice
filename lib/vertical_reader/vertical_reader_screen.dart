@@ -30,14 +30,12 @@ class VerticalReaderScreen extends HookConsumerWidget {
         children: [
           ListView.builder(
             controller: scrollController,
+            padding: const EdgeInsets.symmetric(vertical: 100),
             itemCount: list.length,
             itemBuilder: (context, index) {
-              return SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: Image.network(
-                  list[index],
-                  alignment: Alignment.topCenter,
-                ),
+              return Image.network(
+                list[index],
+                alignment: Alignment.topCenter,
               );
             },
           ),

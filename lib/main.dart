@@ -2,6 +2,7 @@ import 'package:comic_viwer_practice/game/game_screen.dart';
 import 'package:comic_viwer_practice/horizontal_reader/horizontal_reader_screen.dart';
 import 'package:comic_viwer_practice/vertical_reader/vertical_reader_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
@@ -62,10 +63,16 @@ class MyHomeScreen extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => GameScreen(),
-                fullscreenDialog: true,
-              )),
+              onPressed: () async {
+                await SystemChrome.setPreferredOrientations([
+                  DeviceOrientation.landscapeLeft,
+                  DeviceOrientation.landscapeRight,
+                ]);
+                await Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => GameScreen(),
+                  fullscreenDialog: true,
+                ));
+              },
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.yellow[200]!),
