@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Comic {
-  String get imageUrl => throw _privateConstructorUsedError;
   int get comicLength => throw _privateConstructorUsedError;
+  List<String> get imageUrls => throw _privateConstructorUsedError;
+  List<String> get branchUrls => throw _privateConstructorUsedError;
+  List<String> get notSelectedUrls => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ComicCopyWith<Comic> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +30,11 @@ abstract class $ComicCopyWith<$Res> {
   factory $ComicCopyWith(Comic value, $Res Function(Comic) then) =
       _$ComicCopyWithImpl<$Res, Comic>;
   @useResult
-  $Res call({String imageUrl, int comicLength});
+  $Res call(
+      {int comicLength,
+      List<String> imageUrls,
+      List<String> branchUrls,
+      List<String> notSelectedUrls});
 }
 
 /// @nodoc
@@ -44,18 +50,28 @@ class _$ComicCopyWithImpl<$Res, $Val extends Comic>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = null,
     Object? comicLength = null,
+    Object? imageUrls = null,
+    Object? branchUrls = null,
+    Object? notSelectedUrls = null,
   }) {
     return _then(_value.copyWith(
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       comicLength: null == comicLength
           ? _value.comicLength
           : comicLength // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrls: null == imageUrls
+          ? _value.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      branchUrls: null == branchUrls
+          ? _value.branchUrls
+          : branchUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      notSelectedUrls: null == notSelectedUrls
+          ? _value.notSelectedUrls
+          : notSelectedUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -66,7 +82,11 @@ abstract class _$$_ComicCopyWith<$Res> implements $ComicCopyWith<$Res> {
       __$$_ComicCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String imageUrl, int comicLength});
+  $Res call(
+      {int comicLength,
+      List<String> imageUrls,
+      List<String> branchUrls,
+      List<String> notSelectedUrls});
 }
 
 /// @nodoc
@@ -78,18 +98,28 @@ class __$$_ComicCopyWithImpl<$Res> extends _$ComicCopyWithImpl<$Res, _$_Comic>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = null,
     Object? comicLength = null,
+    Object? imageUrls = null,
+    Object? branchUrls = null,
+    Object? notSelectedUrls = null,
   }) {
     return _then(_$_Comic(
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       comicLength: null == comicLength
           ? _value.comicLength
           : comicLength // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrls: null == imageUrls
+          ? _value._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      branchUrls: null == branchUrls
+          ? _value._branchUrls
+          : branchUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      notSelectedUrls: null == notSelectedUrls
+          ? _value._notSelectedUrls
+          : notSelectedUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -97,18 +127,45 @@ class __$$_ComicCopyWithImpl<$Res> extends _$ComicCopyWithImpl<$Res, _$_Comic>
 /// @nodoc
 
 class _$_Comic implements _Comic {
-  const _$_Comic({this.imageUrl = '', this.comicLength = 0});
+  const _$_Comic(
+      {this.comicLength = 0,
+      final List<String> imageUrls = const <String>[],
+      final List<String> branchUrls = const <String>[],
+      final List<String> notSelectedUrls = const <String>[]})
+      : _imageUrls = imageUrls,
+        _branchUrls = branchUrls,
+        _notSelectedUrls = notSelectedUrls;
 
-  @override
-  @JsonKey()
-  final String imageUrl;
   @override
   @JsonKey()
   final int comicLength;
+  final List<String> _imageUrls;
+  @override
+  @JsonKey()
+  List<String> get imageUrls {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageUrls);
+  }
+
+  final List<String> _branchUrls;
+  @override
+  @JsonKey()
+  List<String> get branchUrls {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_branchUrls);
+  }
+
+  final List<String> _notSelectedUrls;
+  @override
+  @JsonKey()
+  List<String> get notSelectedUrls {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_notSelectedUrls);
+  }
 
   @override
   String toString() {
-    return 'Comic(imageUrl: $imageUrl, comicLength: $comicLength)';
+    return 'Comic(comicLength: $comicLength, imageUrls: $imageUrls, branchUrls: $branchUrls, notSelectedUrls: $notSelectedUrls)';
   }
 
   @override
@@ -116,14 +173,23 @@ class _$_Comic implements _Comic {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Comic &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
             (identical(other.comicLength, comicLength) ||
-                other.comicLength == comicLength));
+                other.comicLength == comicLength) &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            const DeepCollectionEquality()
+                .equals(other._branchUrls, _branchUrls) &&
+            const DeepCollectionEquality()
+                .equals(other._notSelectedUrls, _notSelectedUrls));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl, comicLength);
+  int get hashCode => Object.hash(
+      runtimeType,
+      comicLength,
+      const DeepCollectionEquality().hash(_imageUrls),
+      const DeepCollectionEquality().hash(_branchUrls),
+      const DeepCollectionEquality().hash(_notSelectedUrls));
 
   @JsonKey(ignore: true)
   @override
@@ -133,13 +199,20 @@ class _$_Comic implements _Comic {
 }
 
 abstract class _Comic implements Comic {
-  const factory _Comic({final String imageUrl, final int comicLength}) =
-      _$_Comic;
+  const factory _Comic(
+      {final int comicLength,
+      final List<String> imageUrls,
+      final List<String> branchUrls,
+      final List<String> notSelectedUrls}) = _$_Comic;
 
   @override
-  String get imageUrl;
-  @override
   int get comicLength;
+  @override
+  List<String> get imageUrls;
+  @override
+  List<String> get branchUrls;
+  @override
+  List<String> get notSelectedUrls;
   @override
   @JsonKey(ignore: true)
   _$$_ComicCopyWith<_$_Comic> get copyWith =>
