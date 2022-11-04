@@ -22,7 +22,10 @@ class VerticalReaderScreen extends HookConsumerWidget {
         controller: animationController,
         visible: !state.isFullScreen,
         child: AppBar(
-          title: const Text('comic viewer'),
+          backgroundColor: const Color(0xcc180614),
+          title: const Text(
+            '第一話',
+          ),
         ),
       ),
       body: ref.watch(comicProvider).when(
